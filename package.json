@@ -1,0 +1,19 @@
+{
+  "name": "fluid-typography-calculator",
+  "version": "1.0.0",
+  "description": "To calculate CSS clamp values",
+  "main": "index.js",
+  "scripts": {
+    "dev": "lite-server"
+  },
+  "keywords": [
+    "CSS",
+    "fluid",
+    "typography"
+  ],
+  "author": "Ryan Feigenbaum",
+  "license": "ISC",
+  "devDependencies": {
+    "lite-server": "^2.6.1"
+  }
+}
