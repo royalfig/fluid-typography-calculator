@@ -1,12 +1,13 @@
 const sample = document.querySelector(".sample");
 const viewportRadioBtns = document.querySelectorAll('input[name="viewport"]');
 const inputs = document.querySelectorAll(".input");
-const breakpoints = { mobile: 375, tablet: 768, laptop: 1024, desktop: 1920 };
 const viewport = document.querySelector("#viewport");
+const viewportRem = document.querySelector("#viewport-rem");
+
 const slider = document.querySelector("#slider");
 const computed = document.querySelector("#computed");
-const clampText = document.querySelector("#clamp");
-slider.addEventListener("change", updateWidth);
+// slider.addEventListener("change", updateWidth);
+slider.addEventListener("input", updateWidth);
 
 const inputsArray = () =>
   Array.from(inputs).map((el) => {
@@ -74,7 +75,7 @@ function updateConversion(obj) {
   const targetEl = document.querySelector(`[data-unit=${obj.id}]`);
   if (targetEl) {
     const text = obj.unit !== "rem" ? obj.rem : obj.px;
-    targetEl.value = text;
+    targetEl.textContent = text;
   }
 }
 
@@ -102,21 +103,55 @@ font-size: clamp(${min}rem, ${calc}, ${max}rem);`;
 
   // Enter the simulation
   const simulatedVwNum = slider.value;
-  viewport.textContent = `Viewport: ${simulatedVwNum}px`;
-  clampText.textContent = `font-size: clamp(${min}rem, ${calc}, ${max}rem)`;
+  viewport.textContent = `${simulatedVwNum}px`;
+  viewportRem.textContent = `${simulatedVwNum / 16}rem`;
 
   const simulatedCalcVw = simulatedVwNum * factor;
   const simulatedCalc = `calc(${calcRem}em + ${simulatedCalcVw}px)`;
   const simulatedClamp = `font-size: ${min}em;
 font-size: clamp(${min}em, ${simulatedCalc}, ${max}em);`;
   const simulatedFontSize = (calcRem * 16 + simulatedCalcVw).toFixed(4);
-  computed.textContent = simulatedFontSize;
+  const clampedSimulatedFontSize = calcInternalClamp(
+    simulatedFontSize,
+    min * 16,
+    max * 16
+  );
+  computed.textContent = `<p> = ${clampedSimulatedFontSize}px (${(
+    clampedSimulatedFontSize / 16
+  ).toFixed(4)}rem)`;
   sample.setAttribute("style", simulatedClamp);
 }
+const viewportIcon = document.querySelectorAll(".viewport-icon");
 
-function updateWidth() {
-  // switch (e.target.id) {
-  //   case "mobile":
+function determineViewport(num) {
+  switch (true) {
+    case num <= 375:
+      return "mobile";
+    case num <= 768:
+      return "tablet";
+    case num <= 1024:
+      return "laptop";
+    default:
+      return "desktop";
+  }
+}
+
+function updateWidth(e = slider) {
+  console.log(e);
+  const val = e.target?.value || e.value;
+  const viewport = determineViewport(val);
+
+  viewportIcon.forEach((el) => {
+    if (el.classList.contains(viewport)) {
+      el.classList.remove("is-hidden");
+    } else {
+      el.classList.add("is-hidden");
+    }
+
+    // if icon is below
+  });
+  // switch (e.target.value) {
+  //   case (<= 375):
   //     sample.style.width = "375px";
   //     break;
   //   case "tablet":
@@ -137,3 +172,8 @@ function updateWidth() {
 
 inputsArray();
 calculateClamp();
+updateWidth();
+
+function calcInternalClamp(val, min, max) {
+  return val <= max && val >= min ? val : val > max ? max : min;
+}

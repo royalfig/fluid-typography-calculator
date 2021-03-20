@@ -1,24 +1,9 @@
-.hero {
-  background-image: linear-gradient(
-    to right top,
-    #d16ba5,
-    #c777b9,
-    #ba83ca,
-    #aa8fd8,
-    #9a9ae1,
-    #8aa7ec,
-    #79b3f4,
-    #69bff8,
-    #52cffe,
-    #41dfff,
-    #46eefa,
-    #5ffbf1
-  );
+.viewport-icon svg {
+  height: 100%;
+  width: 100%;
 }
 
 .sample-container {
-  max-width: 100%;
-  overflow: hidden;
   font-size: 16px;
 }
 .sample h2 {
@@ -29,4 +14,48 @@
 }
 .sample p {
   max-width: 75ch;
+}
+
+.avatar {
+  height: 2em;
+  width: 2em;
+  object-fit: cover;
+  object-position: top;
+}
+
+.user-select-all {
+  user-select: all;
+}
+
+pre {
+  border-radius: 4px;
+}
+
+.my-slider {
+  -webkit-appearance: none;
+  width: 100%;
+  border: 2px solid green;
+  border-radius: 5px;
+  /* transform: rotate(270deg); */
+}
+
+.my-slider::-webkit-slider-runnable-track {
+  background-color: #3f91e5;
+  padding: 5px;
+}
+.my-slider::-webkit-slider-runnable-track:hover {
+  background-color: orange;
+}
+
+.my-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 20px;
+  width: 40px;
+  border-radius: 10%;
+  background: pink;
+  box-shadow: 2px 2px 1px #000000;
+}
+
+.br {
+  border-radius: 4px;
 }

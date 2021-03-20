@@ -5,181 +5,246 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Fluid Typography Calculator</title>
-    <link
+    <!-- <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
       crossorigin="anonymous"
+    /> -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css"
     />
-    <!-- <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
-      crossorigin="anonymous"
-    ></script> -->
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <section class="hero py-5">
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-10">
-            <h1 class="display-1 text-white">
-              Fluid Typography Scale Calculator
-            </h1>
-          </div>
-        </div>
+    <!-- Hero  -->
+    <section class="hero is-medium is-link has-background-blue">
+      <div class="hero-body container">
+        <p class="title">Fluid Typography Scale Calculator</p>
+        <p class="subtitle">The Clamp Champ 👑</p>
       </div>
     </section>
-    <div class="container my-5">
-      <div class="row justify-content-center">
-        <div class="col-10">
-          <div class="mt-3">
-            <p class="fw-bold">Result</p>
-            <pre
-              id="calc"
-              type="text"
-              class="form-control mb-3 user-select-all"
-            >
-...
-          </pre
-            >
+
+    <section class="section">
+      <div class="container box">
+        <form>
+          <div class="columns">
+            <div class="column">
+              <div class="field">
+                <label for="min-fs" class="label">Min Font Size</label>
+                <div class="field has-addons">
+                  <p class="control is-expanded">
+                    <input
+                      id="min-fs"
+                      type="text"
+                      value="1rem"
+                      class="input"
+                      placeholder="1rem"
+                      pattern="[\d.]+(rem|px)"
+                    />
+                  </p>
+                  <p class="control">
+                    <a
+                      class="button is-static has-background-dark has-text-danger-light is-family-code"
+                      data-unit="min-fs"
+                    ></a>
+                  </p>
+                </div>
+                <p class="help"></p>
+              </div>
+              <!-- Column -->
+            </div>
+            <div class="column">
+              <div class="field">
+                <label for="max-fs" class="label">Max Font Size </label>
+                <div class="field has-addons">
+                  <p class="control is-expanded">
+                    <input
+                      id="max-fs"
+                      type="text"
+                      value="1.25rem"
+                      class="input"
+                      placeholder="1.25rem"
+                      pattern="[\d.]+(rem|px)"
+                    />
+                  </p>
+                  <p class="control">
+                    <a
+                      class="button is-static has-background-dark has-text-danger-light is-family-code"
+                      data-unit="max-fs"
+                    ></a>
+                  </p>
+                </div>
+                <p class="help"></p>
+              </div>
+            </div>
+            <!-- Columns -->
           </div>
-          <form>
-            <div class="row g-2">
-              <div class="col-6">
-                <div class="form-floating">
-                  <input
-                    id="min-fs"
-                    type="text"
-                    value="1rem"
-                    class="input form-control mb-3"
-                    placeholder="1rem"
-                    pattern="[\d.]+(rem|px)"
-                  />
-                  <label for="min-fs" class="form-label">Min Font Size</label>
+          <div class="columns">
+            <div class="column">
+              <div class="field">
+                <label for="min-vw" class="label">Min Viewport</label>
+                <div class="field has-addons">
+                  <p class="control is-expanded">
+                    <input
+                      id="min-vw"
+                      type="text"
+                      value="20rem"
+                      class="input"
+                      placeholder="20rem"
+                      pattern="[\d.]+(rem|px)"
+                    />
+                  </p>
+                  <p class="control">
+                    <a
+                      class="button is-static has-background-dark has-text-danger-light is-family-code"
+                      data-unit="min-vw"
+                    ></a>
+                  </p>
                 </div>
-              </div>
-              <div class="col-6">
-                <div class="form-floating">
-                  <input
-                    data-unit="min-fs"
-                    type="text"
-                    class="form-control mb-3"
-                    readonly
-                    tabindex="-1"
-                  />
-                  <label class="form-label">Unit Conversion</label>
-                </div>
+                <p class="help"></p>
               </div>
             </div>
-            <div class="row g-2">
-              <div class="col-6">
-                <div class="form-floating">
-                  <input
-                    id="max-fs"
-                    type="text"
-                    value="1.25rem"
-                    class="input form-control mb-3"
-                    placeholder="1.25rem"
-                    pattern="[\d.]+(rem|px)"
-                  />
-                  <label for="max-fs" class="form-label">Max Font Size</label>
+            <div class="column">
+              <div class="field">
+                <label for="max-vp" class="label">Max Viewport</label>
+                <div class="field has-addons">
+                  <p class="control is-expanded">
+                    <input
+                      id="max-vw"
+                      type="text"
+                      value="64rem"
+                      class="input"
+                      placeholder="64rem"
+                      pattern="[\d.]+(rem|px)"
+                    />
+                  </p>
+                  <p class="control">
+                    <a
+                      class="button is-static has-background-dark has-text-danger-light is-family-code"
+                      data-unit="max-vw"
+                    ></a>
+                  </p>
                 </div>
-              </div>
-              <div class="col-6">
-                <div class="form-floating">
-                  <input
-                    class="form-control mb-3"
-                    data-unit="max-fs"
-                    readonly
-                    tabindex="-1"
-                  />
-                  <label class="form-label">Unit Conversion</label>
-                </div>
+                <p class="help"></p>
               </div>
             </div>
-            <div class="row g-2">
-              <div class="col-6">
-                <div class="form-floating">
-                  <input
-                    id="min-vw"
-                    type="text"
-                    value="20rem"
-                    class="input form-control mb-3"
-                    placeholder="20rem"
-                    pattern="[\d.]+(rem|px)"
-                  />
-                  <label for="min-vw" class="form-label">Min Viewport</label>
-                </div>
-              </div>
-              <div class="col-6">
-                <div class="form-floating">
-                  <input
-                    class="form-control"
-                    data-unit="min-vw"
-                    readonly
-                    tabindex="-1"
-                  />
-                  <label class="form-label">Unit Conversion</label>
-                </div>
-              </div>
-            </div>
-            <div class="row g-2">
-              <div class="col-6">
-                <div class="form-floating">
-                  <input
-                    id="max-vw"
-                    type="text"
-                    value="64rem"
-                    class="input form-control mb-3"
-                    placeholder="64rem"
-                    pattern="[\d.]+(rem|px)"
-                  />
-                  <label for="max-vp" class="form-label">Max Viewport</label>
-                </div>
-              </div>
-              <div class="col-6">
-                <div class="form-floating">
-                  <input
-                    class="form-control"
-                    data-unit="max-vw"
-                    readonly
-                    tabindex="-1"
-                  />
-                  <label class="form-label">Unit Conversion</label>
-                </div>
-              </div>
-            </div>
-          </form>
-          <div class="row">
-            <div class="col-8">
-              <form id="change-viewport" class="border rounded mb-3 py-2 px-3">
-                <label for="slider" class="form-label"
-                  >Simulated Viewport Slider</label
-                >
+          </div>
+        </form>
+        <!-- Container -->
+      </div>
+
+      <div class="container box">
+        <p class="has-text-weight-bold mb-2">Result</p>
+        <pre
+          id="calc"
+          class="has-background-dark has-text-danger-light user-select-all is-family-code"
+        >
+ ... </pre
+        >
+      </div>
+
+      <!-- Enter Simulation -->
+      <div class="container box">
+        <h2 class="is-size-2 mb-2">Simulated Viewport</h2>
+        <div class="columns">
+          <div class="column">
+            <form id="change-viewport" class="field">
+              <label for="slider" class="label slider-label"
+                >Change viewport width
+                <span id="viewport" class="tag is-info is-light"></span>
+                <span id="viewport-rem" class="tag is-info is-light"></span>
+              </label>
+              <p class="control">
                 <input
                   type="range"
-                  class="form-range"
+                  class="my-slider"
                   min="300"
                   max="2000"
                   step="50"
                   id="slider"
                   value="400"
                 />
-              </form>
-            </div>
-            <div class="col-4 ">
-              <div class="border py-2 px-3 rounded">
-              <p id="viewport"></p>
-              <p id="clamp"></p>
-              <p id="computed"></p>
-              </div>
+              </p>
+            </form>
+          </div>
+          <div class="column is-1">
+            <div class="p-3 br">
+              <span class="viewport-icon is-hidden mobile lh-0"
+                ><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  class="bi bi-phone"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M11 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h6zM5 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H5z"
+                  />
+                  <path d="M8 14a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" /></svg
+              ></span>
+              <span class="viewport-icon is-hidden tablet lh-0"
+                ><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  class="bi bi-tablet"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h8zM4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4z"
+                  />
+                  <path d="M8 14a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" /></svg
+              ></span>
+              <span class="viewport-icon is-hidden laptop v"
+                ><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  class="bi bi-laptop"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M13.5 3a.5.5 0 0 1 .5.5V11H2V3.5a.5.5 0 0 1 .5-.5h11zm-11-1A1.5 1.5 0 0 0 1 3.5V12h14V3.5A1.5 1.5 0 0 0 13.5 2h-11zM0 12.5h16a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 12.5z"
+                  /></svg
+              ></span>
+              <span class="viewport-icon is-hidden desktop lh-0"
+                ><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  class="bi bi-display"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M0 4s0-2 2-2h12s2 0 2 2v6s0 2-2 2h-4c0 .667.083 1.167.25 1.5H11a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1h.75c.167-.333.25-.833.25-1.5H2s-2 0-2-2V4zm1.398-.855a.758.758 0 0 0-.254.302A1.46 1.46 0 0 0 1 4.01V10c0 .325.078.502.145.602.07.105.17.188.302.254a1.464 1.464 0 0 0 .538.143L2.01 11H14c.325 0 .502-.078.602-.145a.758.758 0 0 0 .254-.302 1.464 1.464 0 0 0 .143-.538L15 9.99V4c0-.325-.078-.502-.145-.602a.757.757 0 0 0-.302-.254A1.46 1.46 0 0 0 13.99 3H2c-.325 0-.502.078-.602.145z"
+                  /></svg
+              ></span>
             </div>
           </div>
-          <div class="sample-container border py-2 px-3 rounded">
-            <div class="sample">
-              <h2>Metamorphosis</h2>
-              <h3>Franz Kafka</h3>
+        </div>
+        <div class="sample-container">
+          <div class="sample border rounded px-3 py-2">
+            <code id="computed"></code>
+            <div class="content my-3">
+              <h2>Metamorphosis 🪲</h2>
+            </div>
+            <article class="media my-3">
+              <figure class="media-left">
+                <p class="image is-64x64">
+                  <img
+                    class="is-rounded"
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Kafka.jpg/197px-Kafka.jpg"
+                    height="64"
+                    width="64"
+                    style="object-fit: cover; height: 64px; width: 64px"
+                  />
+                </p>
+              </figure>
+              <div class="media-content">
+                <div class="content">
+                  <h3>Franz Kafka</h3>
+                </div>
+              </div>
+            </article>
+            <div class="content">
               <p>
                 One morning, when Gregor Samsa woke from troubled dreams, he
                 found himself transformed in his bed into a horrible vermin. He
@@ -218,7 +283,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </section>
 
     <script src="index.js"></script>
   </body>
