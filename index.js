@@ -36,11 +36,16 @@ function parseValue(str) {
 
 function errorHandler(el) {
   const element = getEl(el);
+  console.log(element);
+  const helper = element.closest(".field").nextElementSibling;
   if (!element.validity.valid) {
-    element.classList.add("is-invalid");
+    element.classList.add("is-danger");
+    helper.textContent = "Inputs needs to be a number followed by px or rem.";
+    helper.classList.add("is-danger");
     return true;
   } else {
-    element.classList.remove("is-invalid");
+    element.classList.remove("is-danger");
+    helper.textContent = "";
     return false;
   }
 }
@@ -98,7 +103,7 @@ function calculateClamp() {
   const clamp = `font-size: ${min}rem;
 font-size: clamp(${min}rem, ${calc}, ${max}rem);`;
   const calcInput = document.querySelector("#calc");
-  const css = "font-size: " + clamp;
+  const css = clamp;
   calcInput.textContent = css;
 
   // Enter the simulation

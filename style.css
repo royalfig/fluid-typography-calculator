@@ -1,3 +1,11 @@
+html {
+  font-size: 1rem;
+  font-size: clamp(
+    1rem,
+    0.9537037037037037rem + 0.24691358024691357vw,
+    1.25rem
+  );
+}
 .viewport-icon svg {
   height: 100%;
   width: 100%;
@@ -5,6 +13,8 @@
 
 .sample-container {
   font-size: 16px;
+  max-width: 90ch;
+  overflow: hidden;
 }
 .sample h2 {
   font-size: 2.5em;
