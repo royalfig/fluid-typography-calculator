@@ -1,9 +1,189 @@
-<section class="box">
-  <p class="has-text-weight-bold mb-2">Result</p>
-  <pre
-    id="calc"
-    class="has-background-dark has-text-danger-light user-select-all is-family-code"
-  >
- ... </pre
-  >
-</section>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <section class="section">
+      <div class="container">
+        <div class="tile is-ancestor">
+          <div class="tile is-parent">
+            <div
+              class="tile is-child is-12 has-background-link-dark notification has-text-white"
+            >
+              <h2 class="title">Simulated Viewport</h2>
+            </div>
+          </div>
+        </div>
+        <div class="tile is-ancestor">
+          <div class="tile">
+            <div class="is-parent tile">
+              <div
+                class="tile is-child has-background-danger-dark has-text-white notification"
+              >
+                <p class="title">Change Viewport</p>
+                <div class="content">
+                  <form id="change-viewport" class="field">
+                    <label for="slider" class="label slider-label"
+                      >Change viewport width
+                      <span id="viewport" class="tag is-info is-light"></span>
+                      <span
+                        id="viewport-rem"
+                        class="tag is-info is-light"
+                      ></span>
+                    </label>
+                    <p class="control">
+                      <input
+                        type="range"
+                        class="my-slider"
+                        min="300"
+                        max="2000"
+                        step="50"
+                        id="slider"
+                        value="400"
+                      />
+                    </p>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="tile is-parent">
+              <div class="tile is-child notification">
+                <div class="sample-container">
+                  <div class="sample border rounded px-3 py-2">
+                    <div class="content my-3">
+                      <h2>Metamorphosis 🪲</h2>
+                    </div>
+                    <article class="media my-3">
+                      <figure class="media-left">
+                        <p class="image is-64x64">
+                          <img
+                            class="is-rounded"
+                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Kafka.jpg/197px-Kafka.jpg"
+                            height="64"
+                            width="64"
+                            style="object-fit: cover; height: 64px; width: 64px"
+                          />
+                        </p>
+                      </figure>
+                      <div class="media-content">
+                        <div class="content">
+                          <h3>Franz Kafka</h3>
+                        </div>
+                      </div>
+                    </article>
+                    <div class="content">
+                      <p>
+                        One morning, when Gregor Samsa woke from troubled
+                        dreams, he found himself transformed in his bed into a
+                        horrible vermin. He lay on his armour-like back, and if
+                        he lifted his head a little he could see his brown
+                        belly, slightly domed and divided by arches into stiff
+                        sections. The bedding was hardly able to cover it and
+                        seemed ready to slide off any moment. His many legs,
+                        pitifully thin compared with the size of the rest of
+                        him, waved about helplessly as he looked.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tile is-ancestor">
+          <div class="tile">
+            <div class="tile is-parent">
+              <div class="tile is-child notification">
+                <p class="title">
+                  <code>&LeftAngleBracket;p&RightAngleBracket;</code>
+                </p>
+              </div>
+            </div>
+            <div class="tile is-parent">
+              <div class="tile is-child notification">
+                <p class="title">
+                  <code>&LeftAngleBracket;h1&RightAngleBracket;</code>
+                </p>
+              </div>
+            </div>
+            <div class="tile is-parent">
+              <div class="tile is-child notification">
+                <p class="title">
+                  <code>&LeftAngleBracket;h2&RightAngleBracket;</code>
+                </p>
+              </div>
+            </div>
+            <div class="tile is-parent">
+              <div class="tile is-child notification">
+                <div
+                  class="p-3 br is-justify-content-center is-align-items-center is-flex"
+                >
+                  <div class="viewport-icon is-hidden mobile image is-64x64">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="currentColor"
+                      class="bi bi-phone"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        d="M11 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h6zM5 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H5z"
+                      />
+                      <path d="M8 14a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
+                    </svg>
+                  </div>
+                  <div class="viewport-icon is-hidden tablet image is-64x64">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="currentColor"
+                      class="bi bi-tablet"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        d="M12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h8zM4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4z"
+                      />
+                      <path d="M8 14a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
+                    </svg>
+                  </div>
+                  <div class="viewport-icon is-hidden laptop image is-64x64">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="currentColor"
+                      class="bi bi-laptop"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        d="M13.5 3a.5.5 0 0 1 .5.5V11H2V3.5a.5.5 0 0 1 .5-.5h11zm-11-1A1.5 1.5 0 0 0 1 3.5V12h14V3.5A1.5 1.5 0 0 0 13.5 2h-11zM0 12.5h16a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 12.5z"
+                      />
+                    </svg>
+                  </div>
+                  <div class="viewport-icon is-hidden desktop image is-64x64">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="currentColor"
+                      class="bi bi-display"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        d="M0 4s0-2 2-2h12s2 0 2 2v6s0 2-2 2h-4c0 .667.083 1.167.25 1.5H11a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1h.75c.167-.333.25-.833.25-1.5H2s-2 0-2-2V4zm1.398-.855a.758.758 0 0 0-.254.302A1.46 1.46 0 0 0 1 4.01V10c0 .325.078.502.145.602.07.105.17.188.302.254a1.464 1.464 0 0 0 .538.143L2.01 11H14c.325 0 .502-.078.602-.145a.758.758 0 0 0 .254-.302 1.464 1.464 0 0 0 .143-.538L15 9.99V4c0-.325-.078-.502-.145-.602a.757.757 0 0 0-.302-.254A1.46 1.46 0 0 0 13.99 3H2c-.325 0-.502.078-.602.145z"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

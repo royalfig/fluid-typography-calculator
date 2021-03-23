@@ -109,7 +109,10 @@ font-size: clamp(${min}rem, ${calc}, ${max}rem);`;
   // Enter the simulation
   const simulatedVwNum = slider.value;
   viewport.textContent = `${simulatedVwNum}px`;
+
   viewportRem.textContent = `${simulatedVwNum / 16}rem`;
+  const viewportTitle = document.querySelector("#viewport-title");
+  viewportTitle.textContent = `${simulatedVwNum}px`;
 
   const simulatedCalcVw = simulatedVwNum * factor;
   const simulatedCalc = `calc(${calcRem}em + ${simulatedCalcVw}px)`;
@@ -121,26 +124,43 @@ font-size: clamp(${min}em, ${simulatedCalc}, ${max}em);`;
     min * 16,
     max * 16
   );
-  computed.textContent = `<p> = ${clampedSimulatedFontSize}px (${(
-    clampedSimulatedFontSize / 16
-  ).toFixed(4)}rem)`;
+  computed.textContent = `${clampedSimulatedFontSize}px`;
+  computedRem = document.querySelector("#computed-rem");
+  computedRem.textContent = `${+(clampedSimulatedFontSize / 16).toFixed(4)}rem`;
   sample.setAttribute("style", simulatedClamp);
 }
 const viewportIcon = document.querySelectorAll(".viewport-icon");
 
 function determineViewport(num) {
   switch (true) {
-    case num <= 375:
-      return "mobile";
     case num <= 768:
+      return "mobile";
+    case num <= 1023:
       return "tablet";
-    case num <= 1024:
+    case num <= 1407:
       return "laptop";
     default:
       return "desktop";
   }
 }
-
+// =mobile
+// until 768px
+// =tablet
+// from 769px
+// =tablet-only
+// from 769px and until 1023px
+// =touch
+// until 1023px
+// =desktop
+// from 1024px
+// =desktop-only
+// from 1024px and until 1215px
+// =widescreen
+// from 1216px
+// =widescreen-only
+// from 1216px and until 1407px
+// =fullhd
+// from 1408px
 function updateWidth(e = slider) {
   console.log(e);
   const val = e.target?.value || e.value;
