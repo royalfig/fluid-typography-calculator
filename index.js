@@ -3,10 +3,12 @@ const viewportRadioBtns = document.querySelectorAll('input[name="viewport"]');
 const inputs = document.querySelectorAll(".input");
 const viewport = document.querySelector("#viewport");
 const viewportRem = document.querySelector("#viewport-rem");
-
+const viewportTitle = document.querySelector("#viewport-title");
+const calcInput = document.querySelector("#calc");
 const slider = document.querySelector("#slider");
 const computed = document.querySelector("#computed");
-// slider.addEventListener("change", updateWidth);
+const computedRem = document.querySelector("#computed-rem");
+
 slider.addEventListener("input", updateWidth);
 
 const inputsArray = () =>
@@ -30,13 +32,12 @@ function unitConversion(obj) {
 
 function parseValue(str) {
   const num = +str.match(/[\d.]+/) && +str.match(/[\d.]+/)[0];
-  const unit = str.match(/[^.\d]+/) && str.match(/[^.\d]+/)[0];
+  const unit = str.match(/[^.\d]+/) && str.match(/[^.\d]+/)[0].toLowerCase();
   return { num, unit };
 }
 
 function errorHandler(el) {
   const element = getEl(el);
-  console.log(element);
   const helper = element.closest(".field").nextElementSibling;
   if (!element.validity.valid) {
     element.classList.add("is-danger");
@@ -102,30 +103,25 @@ function calculateClamp() {
   const max = Math.max(minFs, maxFs);
   const clamp = `font-size: ${min}rem;
 font-size: clamp(${min}rem, ${calc}, ${max}rem);`;
-  const calcInput = document.querySelector("#calc");
   const css = clamp;
   calcInput.textContent = css;
 
   // Enter the simulation
   const simulatedVwNum = slider.value;
   viewport.textContent = `${simulatedVwNum}px`;
-
   viewportRem.textContent = `${simulatedVwNum / 16}rem`;
-  const viewportTitle = document.querySelector("#viewport-title");
   viewportTitle.textContent = `${simulatedVwNum}px`;
-
   const simulatedCalcVw = simulatedVwNum * factor;
   const simulatedCalc = `calc(${calcRem}em + ${simulatedCalcVw}px)`;
   const simulatedClamp = `font-size: ${min}em;
 font-size: clamp(${min}em, ${simulatedCalc}, ${max}em);`;
-  const simulatedFontSize = (calcRem * 16 + simulatedCalcVw).toFixed(4);
+  const simulatedFontSize = +(calcRem * 16 + simulatedCalcVw).toFixed(4);
   const clampedSimulatedFontSize = calcInternalClamp(
     simulatedFontSize,
     min * 16,
     max * 16
   );
   computed.textContent = `${clampedSimulatedFontSize}px`;
-  computedRem = document.querySelector("#computed-rem");
   computedRem.textContent = `${+(clampedSimulatedFontSize / 16).toFixed(4)}rem`;
   sample.setAttribute("style", simulatedClamp);
 }
@@ -143,26 +139,8 @@ function determineViewport(num) {
       return "desktop";
   }
 }
-// =mobile
-// until 768px
-// =tablet
-// from 769px
-// =tablet-only
-// from 769px and until 1023px
-// =touch
-// until 1023px
-// =desktop
-// from 1024px
-// =desktop-only
-// from 1024px and until 1215px
-// =widescreen
-// from 1216px
-// =widescreen-only
-// from 1216px and until 1407px
-// =fullhd
-// from 1408px
+
 function updateWidth(e = slider) {
-  console.log(e);
   const val = e.target?.value || e.value;
   const viewport = determineViewport(val);
 
@@ -172,33 +150,15 @@ function updateWidth(e = slider) {
     } else {
       el.classList.add("is-hidden");
     }
-
-    // if icon is below
   });
-  // switch (e.target.value) {
-  //   case (<= 375):
-  //     sample.style.width = "375px";
-  //     break;
-  //   case "tablet":
-  //     sample.style.width = "768px";
-  //     break;
-  //   case "laptop":
-  //     sample.style.width = "1024px";
-  //     break;
-  //   case "desktop":
-  //     sample.style.width = "1920px";
-  //     break;
-  //   default:
-  //     sample.style.width = "375px";
-  //     break;
-  // }
+
   calculateClamp();
+}
+
+function calcInternalClamp(val, min, max) {
+  return val <= max && val >= min ? val : val > max ? max : min;
 }
 
 inputsArray();
 calculateClamp();
 updateWidth();
-
-function calcInternalClamp(val, min, max) {
-  return val <= max && val >= min ? val : val > max ? max : min;
-}

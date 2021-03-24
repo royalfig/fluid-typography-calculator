@@ -22,7 +22,7 @@
       <div class="container">
         <div class="tile is-ancestor">
           <div class="tile is-parent">
-            <div class="tile is-child is-info notification">
+            <div class="tile is-child box is-info notification">
               <h1 class="title">Fluid Typography Scale Calculator</h1>
               <p class="subtitle">The Clamp Champ 👑</p>
             </div>
@@ -32,19 +32,36 @@
         <div class="tile is-ancestor">
           <!-- Instructions -->
           <div class="tile is-parent">
-            <article class="tile is-child notification is-success">
+            <article class="tile is-child notification box">
               <div class="content">
                 <p class="title">Instructions</p>
                 <p class="subtitle">How to Use This Calculator</p>
                 <div class="content">
+                  <ul>
+                    <li>
+                      Enter min and max font sizes in <code>px</code> or
+                      <code>rem</code>. Your base font will always remain within
+                      these limits
+                    </li>
+                    <li>
+                      Enter your min and max viewport widths in
+                      <code>px</code> or <code>rem</code>.
+                    </li>
+                    <li>
+                      If the viewport is less than or equal to the minimum width
+                      and vice versa. In between these limits, font size will
+                      scale in proportion to the client's viewport width
+                    </li>
+                    <li>
+                      The <strong>Result</strong> panel shows the generated
+                      formula that you can copy into your CSS
+                    </li>
+                  </ul>
                   <p>
-                    The fluid type calculator takes in four parameters: minimum
-                    and maximum font-size and minimum and maximum viewport
-                    width. Values can be entered in either <code>px</code> or
-                    <code>rem</code>. From these parameters, a CSS property will
-                    be generated that proportionally scales your font size
-                    between the specific min and max viewport widths, while
-                    never exceeding your min and max font size values.
+                    Confused about fluid typography? Read my post, "<a
+                      href="https://ryanfeigenbaum.com/fluid-typography"
+                      >Fluid Typography</a
+                    >" which explains how this calculator works in detail
                   </p>
                 </div>
               </div>
@@ -54,7 +71,7 @@
           <div class="tile is-vertical is-8">
             <div class="tile">
               <div class="tile is-parent is-vertical">
-                <article class="tile is-child notification is-primary">
+                <article class="tile is-child notification box">
                   <div class="field">
                     <label for="min-fs" class="label">Min Font Size</label>
                     <div class="field has-addons">
@@ -65,12 +82,13 @@
                           value="1rem"
                           class="input"
                           placeholder="1rem"
-                          pattern="[\d.]+(rem|px)"
+                          pattern="[\d.]+([Rr][Ee][Mm]|[Pp][Xx])"
+                          required
                         />
                       </p>
                       <p class="control">
                         <a
-                          class="button is-static has-background-primary-dark has-text-white is-family-code"
+                          class="button is-static is-family-code"
                           data-unit="min-fs"
                         ></a>
                       </p>
@@ -79,7 +97,7 @@
                   </div>
                 </article>
 
-                <article class="tile is-child notification is-primary">
+                <article class="tile is-child notification box">
                   <div class="field">
                     <label for="max-fs" class="label">Max Font Size </label>
                     <div class="field has-addons">
@@ -90,12 +108,13 @@
                           value="1.25rem"
                           class="input"
                           placeholder="1.25rem"
-                          pattern="[\d.]+(rem|px)"
+                          pattern="[\d.]+([Rr][Ee][Mm]|[Pp][Xx])"
+                          required
                         />
                       </p>
                       <p class="control">
                         <a
-                          class="button is-static has-background-primary-dark has-text-white is-family-code"
+                          class="button is-static is-family-code"
                           data-unit="max-fs"
                         ></a>
                       </p>
@@ -105,7 +124,7 @@
                 </article>
               </div>
               <div class="tile is-parent is-vertical">
-                <article class="tile is-child notification is-warning">
+                <article class="tile is-child notification box">
                   <div class="field">
                     <label for="min-vw" class="label">Min Viewport</label>
                     <div class="field has-addons">
@@ -116,12 +135,13 @@
                           value="20rem"
                           class="input"
                           placeholder="20rem"
-                          pattern="[\d.]+(rem|px)"
+                          pattern="[\d.]+([Rr][Ee][Mm]|[Pp][Xx])"
+                          required
                         />
                       </p>
                       <p class="control">
                         <a
-                          class="button is-static has-background-warning-dark has-text-light is-family-code"
+                          class="button is-static is-family-code"
                           data-unit="min-vw"
                         ></a>
                       </p>
@@ -129,7 +149,7 @@
                     <p class="help"></p>
                   </div>
                 </article>
-                <article class="tile is-child notification is-warning">
+                <article class="tile is-child notification box">
                   <div class="field">
                     <label for="max-vp" class="label">Max Viewport</label>
                     <div class="field has-addons">
@@ -137,15 +157,16 @@
                         <input
                           id="max-vw"
                           type="text"
-                          value="64rem"
+                          value="120rem"
                           class="input"
-                          placeholder="64rem"
-                          pattern="[\d.]+(rem|px)"
+                          placeholder="120rem"
+                          pattern="[\d.]+([Rr][Ee][Mm]|[Pp][Xx])"
+                          required
                         />
                       </p>
                       <p class="control">
                         <a
-                          class="button is-static has-background-warning-dark has-text-light is-family-code"
+                          class="button is-static is-family-code"
                           data-unit="max-vw"
                         ></a>
                       </p>
@@ -156,7 +177,7 @@
               </div>
             </div>
             <div class="tile is-parent">
-              <article class="tile is-child notification is-danger">
+              <article class="tile is-child notification box">
                 <p class="title">Result</p>
                 <p class="subtitle">CSS clamp property with fallback</p>
                 <pre
@@ -172,155 +193,146 @@
 
         <div class="tile is-ancestor">
           <div class="tile is-parent">
-            <div class="tile is-child is-12 is-info notification">
+            <div class="tile is-child box notification is-info">
               <h2 class="title">Simulated Viewport</h2>
+              <p class="subtitle">Visualize the Scale 👁️‍🗨️</p>
             </div>
           </div>
         </div>
+
         <div class="tile is-ancestor">
-          <div class="tile">
-            <div class="tile is-parent">
-              <div
-                class="is-primary tile is-child notification is-flex is-flex-direction-column is-align-items-center is-justify-content-center"
-              >
-                <p class="header">PARAGRAPH SIZE</p>
-                <p id="computed" class="title has-text-centered"></p>
+          <div class="tile is-vertical is-6">
+            <div class="tile">
+              <div class="tile is-parent">
+                <div class="tile is-child box notification">
+                  <p class="title">Change Viewport</p>
+                  <div class="content">
+                    <form id="change-viewport" class="field">
+                      <label for="slider" class="label slider-label"
+                        >Slide to change viewport width
+                        <span id="viewport" class="tag is-info is-light"></span>
+                        <span
+                          id="viewport-rem"
+                          class="tag is-info is-light"
+                        ></span>
+                      </label>
+                      <p class="control">
+                        <input
+                          type="range"
+                          class="my-slider"
+                          min="250"
+                          max="2550"
+                          step="50"
+                          id="slider"
+                          value="600"
+                        />
+                      </p>
+                    </form>
+                  </div>
+                </div>
               </div>
             </div>
-            <div class="tile is-parent">
-              <div
-                class="is-primary tile is-child notification is-flex is-flex-direction-column is-align-items-center is-justify-content-center"
-              >
-                <p class="header">PARAGRAPH SIZE</p>
-                <p id="computed-rem" class="title has-text-centered"></p>
+            <div class="tile">
+              <div class="tile is-parent">
+                <div class="tile is-child notification box">
+                  <p class="header is-uppercase has-text-centered">PX Size</p>
+                  <p id="computed" class="title has-text-centered"></p>
+                </div>
+              </div>
+              <div class="tile is-parent">
+                <div class="tile is-child notification box">
+                  <p class="header is-uppercase has-text-centered">REM Size</p>
+                  <p id="computed-rem" class="title has-text-centered"></p>
+                </div>
               </div>
             </div>
-            <div class="tile is-parent">
-              <div
-                class="is-warning tile is-child notification is-flex is-flex-direction-column is-align-items-center is-justify-content-center"
-              >
-                <p class="header">VIEWPORT WIDTH</p>
-                <p id="viewport-title" class="title has-text-centered"></p>
+            <div class="tile">
+              <div class="tile is-parent">
+                <div class="tile is-child notification box">
+                  <p class="header is-uppercase has-text-centered">
+                    Viewport Width
+                  </p>
+                  <p id="viewport-title" class="title has-text-centered"></p>
+                </div>
               </div>
-            </div>
-            <div class="tile is-parent">
-              <div class="tile is-child notification is-warning">
-                <div
-                  class="p-3 br is-justify-content-center is-flex-direction-column is-align-items-center is-flex"
-                >
-                  <p class="header mb-1">VIEWPORT</p>
-                  <div class="viewport-icon is-hidden mobile image is-64x64">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="currentColor"
-                      class="bi bi-phone"
-                      viewBox="0 0 16 16"
-                    >
-                      <path
-                        d="M11 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h6zM5 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H5z"
-                      />
-                      <path d="M8 14a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
-                    </svg>
-                  </div>
-                  <div class="viewport-icon is-hidden tablet image is-64x64">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="currentColor"
-                      class="bi bi-tablet"
-                      viewBox="0 0 16 16"
-                    >
-                      <path
-                        d="M12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h8zM4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4z"
-                      />
-                      <path d="M8 14a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
-                    </svg>
-                  </div>
-                  <div class="viewport-icon is-hidden laptop image is-64x64">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="currentColor"
-                      class="bi bi-laptop"
-                      viewBox="0 0 16 16"
-                    >
-                      <path
-                        d="M13.5 3a.5.5 0 0 1 .5.5V11H2V3.5a.5.5 0 0 1 .5-.5h11zm-11-1A1.5 1.5 0 0 0 1 3.5V12h14V3.5A1.5 1.5 0 0 0 13.5 2h-11zM0 12.5h16a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 12.5z"
-                      />
-                    </svg>
-                  </div>
-                  <div class="viewport-icon is-hidden desktop image is-64x64">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="currentColor"
-                      class="bi bi-display"
-                      viewBox="0 0 16 16"
-                    >
-                      <path
-                        d="M0 4s0-2 2-2h12s2 0 2 2v6s0 2-2 2h-4c0 .667.083 1.167.25 1.5H11a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1h.75c.167-.333.25-.833.25-1.5H2s-2 0-2-2V4zm1.398-.855a.758.758 0 0 0-.254.302A1.46 1.46 0 0 0 1 4.01V10c0 .325.078.502.145.602.07.105.17.188.302.254a1.464 1.464 0 0 0 .538.143L2.01 11H14c.325 0 .502-.078.602-.145a.758.758 0 0 0 .254-.302 1.464 1.464 0 0 0 .143-.538L15 9.99V4c0-.325-.078-.502-.145-.602a.757.757 0 0 0-.302-.254A1.46 1.46 0 0 0 13.99 3H2c-.325 0-.502.078-.602.145z"
-                      />
-                    </svg>
+              <div class="tile is-parent">
+                <div class="tile is-child notification box">
+                  <div
+                    class="is-justify-content-center is-flex-direction-column is-align-items-center is-flex"
+                  >
+                    <p class="header is-uppercase mb-1">Device</p>
+                    <div class="viewport-icon is-hidden mobile image is-64x64">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="currentColor"
+                        class="bi bi-phone"
+                        viewBox="0 0 16 16"
+                      >
+                        <path
+                          d="M11 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h6zM5 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H5z"
+                        />
+                        <path d="M8 14a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
+                      </svg>
+                    </div>
+                    <div class="viewport-icon is-hidden tablet image is-64x64">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="currentColor"
+                        class="bi bi-tablet"
+                        viewBox="0 0 16 16"
+                      >
+                        <path
+                          d="M12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h8zM4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4z"
+                        />
+                        <path d="M8 14a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
+                      </svg>
+                    </div>
+                    <div class="viewport-icon is-hidden laptop image is-64x64">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="currentColor"
+                        class="bi bi-laptop"
+                        viewBox="0 0 16 16"
+                      >
+                        <path
+                          d="M13.5 3a.5.5 0 0 1 .5.5V11H2V3.5a.5.5 0 0 1 .5-.5h11zm-11-1A1.5 1.5 0 0 0 1 3.5V12h14V3.5A1.5 1.5 0 0 0 13.5 2h-11zM0 12.5h16a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 12.5z"
+                        />
+                      </svg>
+                    </div>
+                    <div class="viewport-icon is-hidden desktop image is-64x64">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="currentColor"
+                        class="bi bi-display"
+                        viewBox="0 0 16 16"
+                      >
+                        <path
+                          d="M0 4s0-2 2-2h12s2 0 2 2v6s0 2-2 2h-4c0 .667.083 1.167.25 1.5H11a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1h.75c.167-.333.25-.833.25-1.5H2s-2 0-2-2V4zm1.398-.855a.758.758 0 0 0-.254.302A1.46 1.46 0 0 0 1 4.01V10c0 .325.078.502.145.602.07.105.17.188.302.254a1.464 1.464 0 0 0 .538.143L2.01 11H14c.325 0 .502-.078.602-.145a.758.758 0 0 0 .254-.302 1.464 1.464 0 0 0 .143-.538L15 9.99V4c0-.325-.078-.502-.145-.602a.757.757 0 0 0-.302-.254A1.46 1.46 0 0 0 13.99 3H2c-.325 0-.502.078-.602.145z"
+                        />
+                      </svg>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="tile is-ancestor">
           <div class="tile">
-            <div class="is-parent tile">
-              <div class="tile is-child is-success notification">
-                <p class="title">Change Viewport</p>
-                <div class="content">
-                  <form id="change-viewport" class="field">
-                    <label
-                      for="slider"
-                      class="has-text-white label slider-label"
-                      >Change viewport width
-                      <span id="viewport" class="tag is-info is-light"></span>
-                      <span
-                        id="viewport-rem"
-                        class="tag is-info is-light"
-                      ></span>
-                    </label>
-                    <p class="control">
-                      <input
-                        type="range"
-                        class="my-slider"
-                        min="300"
-                        max="2000"
-                        step="50"
-                        id="slider"
-                        value="400"
-                      />
-                    </p>
-                  </form>
-                </div>
-              </div>
-            </div>
             <div class="tile is-parent">
-              <div class="tile is-child notification is-danger">
+              <div class="tile is-child box notification">
                 <div class="sample-container">
                   <div class="sample border rounded px-3 py-2">
-                    <div class="my-3">
-                      <h2>Metamorphosis 🪲</h2>
+                    <div class="mb-2">
+                      <h2>Metamorphosis</h2>
                     </div>
-                    <article class="media my-3">
-                      <figure class="media-left">
-                        <p class="image is-64x64">
-                          <img
-                            class="is-rounded"
-                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Kafka.jpg/197px-Kafka.jpg"
-                            height="64"
-                            width="64"
-                            style="object-fit: cover; height: 64px; width: 64px"
-                          />
-                        </p>
-                      </figure>
-                      <div class="media-content">
-                        <div>
-                          <h3>Franz Kafka</h3>
-                        </div>
-                      </div>
-                    </article>
+                    <div class="is-flex is-align-items-center mb-5">
+                      <img
+                        class="mr-2 avatar"
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Kafka.jpg/197px-Kafka.jpg"
+                      />
+
+                      <h3>Franz Kafka</h3>
+                    </div>
+
                     <div class="content">
                       <p>
                         One morning, when Gregor Samsa woke from troubled
@@ -333,6 +345,41 @@
                         pitifully thin compared with the size of the rest of
                         him, waved about helplessly as he looked.
                       </p>
+                      <p>
+                        "What's happened to me?" he thought. It wasn't a dream.
+                        His room, a proper human room although a little too
+                        small, lay peacefully between its four familiar walls. A
+                        collection of textile samples lay spread out on the
+                        table - Samsa was a travelling salesman - and above it
+                        there hung a picture that he had recently cut out of an
+                        illustrated magazine and housed in a nice, gilded frame.
+                        It showed a lady fitted out with a fur hat and fur boa
+                        who sat upright, raising a heavy fur muff that covered
+                        the whole of her lower arm towards the viewer.
+                      </p>
+                      <p>
+                        Gregor then turned to look out the window at the dull
+                        weather. Drops of rain could be heard hitting the pane,
+                        which made him feel quite sad. "How about if I sleep a
+                        little bit longer and forget all this nonsense", he
+                        thought, but that was something he was unable to do
+                        because he was used to sleeping on his right, and in his
+                        present state couldn't get into that position. However
+                        hard he threw himself onto his right, he always rolled
+                        back to where he was. He must have tried it a hundred
+                        times, shut his eyes so that he wouldn't have to look at
+                        the floundering legs, and only stopped when he began to
+                        feel a mild, dull pain there that he had never felt
+                        before.
+                      </p>
+                      <a
+                        class="button is-info"
+                        href="http://www.gutenberg.org/ebooks/5200"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >Continue Reading Kafka's
+                        <i>&nbsp;Metamorphosis&nbsp;</i> 🪲</a
+                      >
                     </div>
                   </div>
                 </div>
