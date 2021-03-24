@@ -2,12 +2,10 @@ const sample = document.querySelector(".sample");
 const viewportRadioBtns = document.querySelectorAll('input[name="viewport"]');
 const inputs = document.querySelectorAll(".input");
 const viewport = document.querySelector("#viewport");
-const viewportRem = document.querySelector("#viewport-rem");
 const viewportTitle = document.querySelector("#viewport-title");
 const calcInput = document.querySelector("#calc");
 const slider = document.querySelector("#slider");
 const computed = document.querySelector("#computed");
-const computedRem = document.querySelector("#computed-rem");
 
 slider.addEventListener("input", updateWidth);
 
@@ -109,7 +107,6 @@ font-size: clamp(${min}rem, ${calc}, ${max}rem);`;
   // Enter the simulation
   const simulatedVwNum = slider.value;
   viewport.textContent = `${simulatedVwNum}px`;
-  viewportRem.textContent = `${simulatedVwNum / 16}rem`;
   viewportTitle.textContent = `${simulatedVwNum}px`;
   const simulatedCalcVw = simulatedVwNum * factor;
   const simulatedCalc = `calc(${calcRem}em + ${simulatedCalcVw}px)`;
@@ -122,7 +119,6 @@ font-size: clamp(${min}em, ${simulatedCalc}, ${max}em);`;
     max * 16
   );
   computed.textContent = `${clampedSimulatedFontSize}px`;
-  computedRem.textContent = `${+(clampedSimulatedFontSize / 16).toFixed(4)}rem`;
   sample.setAttribute("style", simulatedClamp);
 }
 const viewportIcon = document.querySelectorAll(".viewport-icon");
