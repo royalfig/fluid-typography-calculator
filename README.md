@@ -21,3 +21,7 @@ How to Use This Calculator
 ## Confused about fluid typography?
 
 Read my post, "[Fluid Typography](#)" which explains how this calculator works in detail
+
+## Credits 👏
+
+This calculator is inspired by Christopher Kirk-Nielsen's post, "[Modern Fluid Typography with Clamp()](https://chriskirknielsen.com/blog/modern-fluid-typography-with-clamp/)"
