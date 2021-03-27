@@ -6,6 +6,7 @@ const viewportTitle = document.querySelector("#viewport-title");
 const calcInput = document.querySelector("#calc");
 const slider = document.querySelector("#slider");
 const computed = document.querySelector("#computed");
+const viewportIcon = document.querySelectorAll(".viewport-icon");
 
 slider.addEventListener("input", updateWidth);
 
@@ -88,6 +89,7 @@ function convertToRem(obj) {
 }
 
 function calculateClamp() {
+  console.log("ran");
   const updatedValues = inputsArray();
   const minFs = convertToRem(updatedValues.find((obj) => obj.id === "min-fs"));
   const maxFs = convertToRem(updatedValues.find((obj) => obj.id === "max-fs"));
@@ -121,7 +123,6 @@ font-size: clamp(${min}em, ${simulatedCalc}, ${max}em);`;
   computed.textContent = `${clampedSimulatedFontSize}px`;
   sample.setAttribute("style", simulatedClamp);
 }
-const viewportIcon = document.querySelectorAll(".viewport-icon");
 
 function determineViewport(num) {
   switch (true) {

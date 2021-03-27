@@ -15,12 +15,12 @@ html {
   font-size: 16px;
   width: 100%;
   position: relative;
+  height: 550px;
+  overflow-y: auto;
 }
 
 .sample {
-  overflow-y: auto;
-  height: 550px;
-  /* max-width: 350px; */
+  max-width: 350px;
   overflow-x: hidden;
   padding-right: 1em;
 }
@@ -66,7 +66,7 @@ pre {
 
 .icon-box {
   position: absolute;
-  bottom: -8px;
+  bottom: 8px;
   right: 50%;
   font-size: 16px;
   transform: translateX(50%);
