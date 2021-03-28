@@ -20,8 +20,10 @@ How to Use This Calculator
 
 ## Confused about fluid typography?
 
-Read my post, "[Fluid Typography](#)" which explains how this calculator works in detail
+Read my post, "[Fluid Typography](#)(Forthcoming, bitches!)" which explains how this calculator works in detail
 
 ## Credits 👏
 
 This calculator is inspired by Christopher Kirk-Nielsen's post, "[Modern Fluid Typography with Clamp()](https://chriskirknielsen.com/blog/modern-fluid-typography-with-clamp/)"
+
+For another fallback strategy that matches clamp's functionality, see Daniel Yuschick's "[Fluid Typography with CSS Clamp() is My New Favorite Thing](https://dev.to/yuschick/fluid-typography-with-css-clamp-is-my-new-favorite-thing-4lg3)"
